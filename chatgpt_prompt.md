@@ -41,3 +41,5 @@ Further research would expand the capabilities of such a design tool and impleme
 Annotate the following idea including a tag a the end of each sentence, following the format "sentence 1 [TAG] sentence2 [TAG]":
 Title: [Title]
 [Description]
+
+Output:
