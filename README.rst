@@ -21,8 +21,40 @@ The whole project is handled with ``make``, go to a terminal an issue:
 
 Reproducibility
 ---------------
+**Data split:**
+To split the OSIP dataset in train and test splits, we can run the split_data.py script:
 
-(TBD)
+.. code:: bash
+
+   python scripts/split_data.py
+
+Two files, train.jsonl and test.jsonl, will be created in the data/processed folder.
+
+To train a single sentence classifier using the training OSIP data without context, we run:
+
+.. code:: bash
+
+   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --input_train_dataset data/processed/train.jsonl --input_test_dataset data/processed/test.jsonl
+
+If we want to use the context, we run:
+
+.. code:: bash
+
+   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --input_train_dataset data/processed/train.jsonl --input_test_dataset data/processed/test.jsonl --use_context
+
+To train using the OSIP plus dataset, we have to change the input_train_dataset to :
+
+.. code:: bash
+
+   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --input_train_dataset data/processed/osip_plus.jsonl --input_test_dataset data/processed/test.jsonl --use_context
+
+(TODO: Include how to do the sequential sentence classification)
+
+Sequential Transfer Learning
+~~~~~~~~~~~~~~~~~~~~~
+
+Multi-Task Learning
+~~~~~~~~~~~~~~~~~~~~~
 
 How to cite
 -----------
