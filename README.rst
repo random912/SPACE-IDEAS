@@ -13,8 +13,11 @@ The whole project is handled with ``make``, go to a terminal an issue:
 
 .. code:: bash
 
+   git clone https://github.com/random912/Streamlining-Proposal-Evaluation-in-the-Open-Space-Innovation-Platform.git
+   cd Streamlining-Proposal-Evaluation-in-the-Open-Space-Innovation-Platform/
    make setup
-   ...
+   conda activate ideas_annotation
+   make install-as-pkg
 
 Reproducibility
 ---------------
