@@ -129,28 +129,17 @@ def compute_predict_metrics(gold_labels, predict_labels, label2id):
     }
 
 
-def ideas_to_sentences(dataset, title_in_sentences=True):
+def ideas_to_sentences(dataset):
     sentences = []
     labels = []
     contexts = []
     for example in dataset:
-        sentences += (
-            example["sentences"][1:] if title_in_sentences else example["sentences"]
-        )
-        labels += example["labels"][1:] if title_in_sentences else example["labels"]
-        if title_in_sentences:
-            try:
-                context = (
-                    example["sentences"][0] + "\n" + " ".join(example["sentences"][1:])
-                )
-            except IndexError:
-                print(example)
-            contexts += [context] * len(example["labels"][1:])
-        else:
-            title = example["title"] if example["title"] else ""
-            description = example["description"] if example["description"] else ""
-            context = title + "\n" + description
-            contexts += [context] * len(example["labels"])
+        sentences += example["sentences"]
+        labels += example["labels"]
+        title = example["title"] if example["title"] else ""
+        description = " ".join(sentences) if sentences else ""
+        context = title + "\n" + description
+        contexts += [context] * len(example["labels"])
     ds = Dataset.from_dict(
         {"sentence": sentences, "label": labels, "context": contexts}
     )
@@ -170,12 +159,6 @@ def parse_args():
         type=str,
         default="data/processed/test.jsonl",
         help='Path to the test dataset (default "data/processed/test.jsonl")',
-    )
-    parser.add_argument(
-        "--title_in_sentences",
-        default=False,
-        action="store_true",
-        help="Whether sentences in trainig set contains title",
     )
     parser.add_argument(
         "--use_context",
