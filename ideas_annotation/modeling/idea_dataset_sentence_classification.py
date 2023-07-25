@@ -190,7 +190,7 @@ def main(args):
             "train": args.input_train_dataset,
         },
     )
-    train_dataset = ideas_to_sentences(dataset["train"], args.title_in_sentences)
+    train_dataset = ideas_to_sentences(dataset["train"])
     train_dataset = train_dataset.filter(lambda example: example["label"] != "None")
     train_dataset = train_dataset.map(lambda batch: {"label": label2id[batch["label"]]})
     train_tokenized_dataset = train_dataset.map(
