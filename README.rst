@@ -19,12 +19,7 @@ The whole project is handled with ``make``, go to a terminal an issue:
 Reproducibility
 ---------------
 
-To reproduce the results from the original paper, do:
-
-.. code:: bash
-
-   make repro
-
+(TBD)
 
 How to cite
 -----------
