@@ -25,7 +25,7 @@ setup(
     url='https://github.com/random912/Streamlining-Proposal-Evaluation-in-the-Open-Space-Innovation-Platform',
     python_requires='>=3.5',
     packages=[
-        'ideas_annotation',
+        'ideas_annotation', 'ideas_annotation.*'
     ],
     package_dir={'ideas_annotation':
                  'ideas_annotation'},
