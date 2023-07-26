@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*-
 
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
-    from distutils.core import setup
+    from distutils.core import setup, find_packages
 
 
 with open('README.rst') as readme_file:
@@ -24,9 +24,9 @@ setup(
     author_email='',
     url='https://github.com/random912/Streamlining-Proposal-Evaluation-in-the-Open-Space-Innovation-Platform',
     python_requires='>=3.5',
-    packages=[
+    packages=find_packages(include=[
         'ideas_annotation', 'ideas_annotation.*'
-    ],
+    ]),
     package_dir={'ideas_annotation':
                  'ideas_annotation'},
     include_package_data=True,
