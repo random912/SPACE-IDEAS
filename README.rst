@@ -52,6 +52,34 @@ To train using the OSIP plus dataset, we have to change the input_train_dataset 
 
 Sequential Transfer Learning
 ~~~~~~~~~~~~~~~~~~~~~
+We can train a model, using for example osip plus dataset, and use that trained model tu finetune on the OSIP dataset, we can do this with the following command:
+
+.. code:: bash
+
+   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --model $PATH_TO_TRAINED_MODEL --input_train_dataset data/processed/osip_plus.jsonl --input_test_dataset data/processed/test.jsonl --use_context
+
+There are different datasets that can be used for this previous fine-tuning, one is OSIP plus, but we can also train other datasets such as: 
+
+- CSAbstruct:
+
+   .. code:: bash
+   
+      python ideas_annotation/modeling/csabstruct_sentence_classification.py
+
+- PMD20KRCT:
+
+   .. code:: bash
+
+      git clone https://github.com/Franck-Dernoncourt/pubmed-rct.git
+      python scripts/prepare_pmd.py
+      python ideas_annotation/modeling/pubmed_sentence_classification.py --input_dataset data/processed/pubmed-20k-rct
+
+- Scim:
+
+   .. code:: bash
+
+      python scripts/prepare_scim.py
+      python ideas_annotation/modeling/scim_sentence_classification.py --input_dataset data/processed/scim
 
 Multi-Task Learning
 ~~~~~~~~~~~~~~~~~~~~~
