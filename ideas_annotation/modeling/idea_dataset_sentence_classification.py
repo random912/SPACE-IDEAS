@@ -137,7 +137,7 @@ def ideas_to_sentences(dataset):
         sentences += example["sentences"]
         labels += example["labels"]
         title = example["title"] if example["title"] else ""
-        description = " ".join(sentences) if sentences else ""
+        description = example["description"] if "description" in example else " ".join(example["sentences"])
         context = title + "\n" + description
         contexts += [context] * len(example["labels"])
     ds = Dataset.from_dict(
