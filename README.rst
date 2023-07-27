@@ -56,7 +56,7 @@ We can train a model, using for example osip plus dataset, and use that trained 
 
 .. code:: bash
 
-   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --model $PATH_TO_TRAINED_MODEL --input_train_dataset data/processed/osip_plus.jsonl --input_test_dataset data/processed/test.jsonl --use_context
+   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --model $PATH_TO_TRAINED_MODEL --input_train_dataset data/processed/train.jsonl --input_test_dataset data/processed/test.jsonl --use_context
 
 There are different datasets that can be used for this previous fine-tuning, one is OSIP plus, but we can also train other datasets such as: 
 
