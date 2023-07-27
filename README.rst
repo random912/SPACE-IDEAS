@@ -52,7 +52,7 @@ To train using the OSIP plus dataset, we have to change the input_train_dataset 
 
 Sequential Transfer Learning
 ~~~~~~~~~~~~~~~~~~~~~
-We can train a model, using for example osip plus dataset, and use that trained model tu finetune on the OSIP dataset, we can do this with the following command:
+We can train a model, using for example OSIP plus dataset, and use that trained model to finetune on the OSIP dataset, we can do this with the following command:
 
 .. code:: bash
 
