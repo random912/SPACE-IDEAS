@@ -71,7 +71,7 @@ if "chatgpt" in tasks:
         lambda example: example["description"]
     )
     chatgpt_dataset_sentences = (
-        ideas_to_sentences(chatgpt_dataset, title_in_sentences=False)
+        ideas_to_sentences(chatgpt_dataset)
         .rename_column("label", "chatgpt")
         .map(lambda batch: {"chatgpt": label2id[batch["chatgpt"]]})
     )
