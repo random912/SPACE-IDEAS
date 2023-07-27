@@ -81,8 +81,20 @@ There are different datasets that can be used for this previous fine-tuning, one
       python scripts/prepare_scim.py
       python ideas_annotation/modeling/scim_sentence_classification.py --input_dataset data/processed/scim
 
+(TODO: Include how to do it with sequential sentence classification)
+
 Multi-Task Learning
 ~~~~~~~~~~~~~~~~~~~~~
+By deafult, we can do multitask training all the available datasets (OSIP, OSIP plus, CSAbstruct, PMD20KRCT, and Scim) with:
+
+.. code:: bash
+
+   python scripts/merge_osip_dataset.py
+   python ideas_annotation/modeling/idea_dataset_multitask_sentence_classification.py
+
+If we change the "tasks" variable in the idea_dataset_multitask_sentence_classification.py script (line 45), we can select the preferred combination of datasets.
+
+(TODO: Include how to do it with sequential sentence classification)
 
 How to cite
 -----------
