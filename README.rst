@@ -30,6 +30,8 @@ To split the OSIP dataset in train and test splits, we can run the split_data.py
 
 Two files, train.jsonl and test.jsonl, will be created in the data/processed folder.
 
+**Single-sentence classification:**
+
 To train a single sentence classifier using the training OSIP data without context, we run:
 
 .. code:: bash
@@ -48,7 +50,19 @@ To train using the OSIP plus dataset, we have to change the input_train_dataset 
 
    python ideas_annotation/modeling/idea_dataset_sentence_classification.py --input_train_dataset data/processed/osip_plus.jsonl --input_test_dataset data/processed/test.jsonl --use_context
 
-(TODO: Include how to do the sequential sentence classification)
+**Sequential sentence classification:**
+
+.. code:: bash
+
+   git clone https://github.com/UrszulaCzerwinska/sequential_sentence_classification.git
+   cd sequential_sentence_classification/
+   git checkout allennlp2
+   conda create -n sequential_sentence_classification python=3.9
+   conda activate sequential_sentence_classification
+   pip install allennlp==2.0.0
+   ./scripts/train.sh tmp_output_dir_csabstruct
+
+(TBD)
 
 Sequential Transfer Learning
 ~~~~~~~~~~~~~~~~~~~~~
