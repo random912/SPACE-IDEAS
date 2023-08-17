@@ -85,16 +85,35 @@ There are different datasets that can be used for this previous fine-tuning, one
 
 Multi-Task Learning
 ~~~~~~~~~~~~~~~~~~~~~
-By deafult, we can do multitask training all the available datasets (OSIP, OSIP plus, CSAbstruct, PMD20KRCT, and Scim) with:
+**Single-sentence classification:**
+
+By deafult, we can do multitask training using all the available datasets (OSIP, OSIP plus, CSAbstruct, PMD20KRCT, and Scim) with:
 
 .. code:: bash
 
    python scripts/merge_osip_dataset.py
    python ideas_annotation/modeling/idea_dataset_multitask_sentence_classification.py
 
-If we change the "tasks" variable in the idea_dataset_multitask_sentence_classification.py script (line 45), we can select the preferred combination of datasets.
+By changing the "tasks" variable in the idea_dataset_multitask_sentence_classification.py script (line 45), we can select the preferred combination of datasets: ["scim" (Scim), "csabstruct" (CSAbstruct), "pubmed" (PMD20KRCT), "chatgpt" (OSIP plus), "gold" (OSIP)].
 
-(TODO: Include how to do it with sequential sentence classification)
+**Sequential sentence classification:**
+
+To run the multitask traininig with sequential sentence classification, we need to install a variation of the `grouphug <https://github.com/sanderland/grouphug>`_ library. We can install it with:
+
+.. code:: bash
+
+   git clone https://github.com/random912/grouphug.git
+   cd grouphug
+   pip install .
+   cd ..
+
+Now we can run the idea_dataset_multitask_sentence_classification.py script:
+
+.. code:: bash
+
+   python ideas_annotation/modeling/idea_dataset_multitask_sentence_classification.py
+
+In line 135 of the script, we can set the combinations of datasets that we want to train: ["csabstruct", "pubmed", "chatgpt", "gold"].
 
 How to cite
 -----------
