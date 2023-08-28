@@ -52,17 +52,52 @@ To train using the OSIP plus dataset, we have to change the input_train_dataset 
 
 **Sequential sentence classification:**
 
+We need to split the train set in train2 and dev set, we can do this with:
+
 .. code:: bash
 
-   git clone https://github.com/UrszulaCzerwinska/sequential_sentence_classification.git
+   python scripts/split_data.py
+
+Two files, train2.jsonl and dev.jsonl, will be created in the data/processed folder. 
+
+We clone the sequential_sentence_classification repository, create a new conda environment and install the required allennlp library.
+
+.. code:: bash
+
+   git clone https://github.com/random912/sequential_sentence_classification.git
    cd sequential_sentence_classification/
    git checkout allennlp2
    conda create -n sequential_sentence_classification python=3.9
    conda activate sequential_sentence_classification
    pip install allennlp==2.0.0
-   ./scripts/train.sh tmp_output_dir_csabstruct
 
-(TBD)
+We have to modify the train.sh script in scripts folder, with the data paths:
+
+.. code:: bash
+
+   TRAIN_PATH=../data/processed/train2.jsonl
+   DEV_PATH=../data/processed/dev.jsonl
+   TEST_PATH=../data/processed/test.jsonl
+
+We can now run the trainining stript with:
+
+.. code:: bash
+
+   ./scripts/train.sh tmp_output_dir_osip
+
+The trained model will be at tmp_output_dir_osip/model.tar.gz, we can get the test predictions with:
+
+.. code:: bash
+
+   python -m allennlp predict tmp_output_dir_osip/model.tar.gz ../data/processed/test.jsonl --include-package sequential_sentence_classification --predictor SeqClassificationPredictor --cuda-device 0 --output-file osip-predictions.json
+   
+Now we can obtain the prediction metrics with:
+
+.. code:: bash
+
+   cd ..
+   conda activate ideas_annotation
+   python scripts/sequential_sentence_classification_metrics.py --prediction_test_file sequential_sentence_classification/osip-predictions.json --gold_test_file data/processed/test.jsonl
 
 Sequential Transfer Learning
 ~~~~~~~~~~~~~~~~~~~~~
