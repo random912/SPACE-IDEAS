@@ -118,10 +118,8 @@ By deafult, we can do multitask training using all the available datasets (SPACE
 
 .. code:: bash
 
-   python scripts/merge_osip_dataset.py
+   python scripts/merge_space-ideas_dataset.py
    python ideas_annotation/modeling/idea_dataset_multitask_sentence_classification.py
-
-By changing the "tasks" variable in the idea_dataset_multitask_sentence_classification.py script (line 45), we can select the preferred combination of datasets: [ "chatgpt" (SPACE-IDEAS plus), "gold" (SPACE-IDEAS)].
 
 **Sequential sentence classification:**
 
