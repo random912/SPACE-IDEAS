@@ -89,7 +89,7 @@ The trained model will be at tmp_output_dir_osip/model.tar.gz, we can get the te
 
 .. code:: bash
 
-   python -m allennlp predict tmp_output_dir_osip/model.tar.gz ../data/processed/test.jsonl --include-package sequential_sentence_classification --predictor SeqClassificationPredictor --cuda-device 0 --output-file osip-predictions.json
+   python -m allennlp predict tmp_output_dir_osip/model.tar.gz ../data/processed/test.jsonl --include-package sequential_sentence_classification --predictor SeqClassificationPredictor --cuda-device 0 --output-file space-ideas-predictions.json
    
 Now we can obtain the prediction metrics with:
 
@@ -97,7 +97,7 @@ Now we can obtain the prediction metrics with:
 
    cd ..
    conda activate ideas_annotation
-   python scripts/sequential_sentence_classification_metrics.py --prediction_test_file sequential_sentence_classification/osip-predictions.json --gold_test_file data/processed/test.jsonl
+   python scripts/sequential_sentence_classification_metrics.py --prediction_test_file sequential_sentence_classification/space-ideas-predictions.json --gold_test_file data/processed/test.jsonl
 
 Sequential Transfer Learning
 ~~~~~~~~~~~~~~~~~~~~~
