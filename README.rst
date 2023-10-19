@@ -4,7 +4,7 @@ SPACE-IDEAS: A Dataset for Salient Information Detection in Space Innovation
 
 |PyPI pyversions|
 
-Source code and datasets for paper SPACE-IDEAS: A Dataset for Salient Information Detection in Space Innovation
+Source code and datasets for the paper SPACE-IDEAS: A Dataset for Salient Information Detection in Space Innovation
 
 Installation
 ------------
