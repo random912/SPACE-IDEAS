@@ -48,7 +48,7 @@ To train using the SPACE-IDEAS plus dataset, we have to change the input_train_d
 
 .. code:: bash
 
-   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --input_train_dataset data/processed/osip_plus.jsonl --input_test_dataset data/processed/test.jsonl --use_context
+   python ideas_annotation/modeling/idea_dataset_sentence_classification.py --input_train_dataset data/processed/space-ideas_plus.jsonl --input_test_dataset data/processed/test.jsonl --use_context
 
 **Sequential sentence classification:**
 
