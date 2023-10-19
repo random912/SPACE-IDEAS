@@ -13,8 +13,8 @@ The whole project is handled with ``make``, go to a terminal an issue:
 
 .. code:: bash
 
-   git clone https://github.com/random912/SPACE-IDEAS-A-Dataset-for-Salient-Information-Detection-in-Space-Innovation.git
-   cd SPACE-IDEAS-A-Dataset-for-Salient-Information-Detection-in-Space-Innovation
+   git clone https://github.com/random912/SPACE-IDEAS.git
+   cd SPACE-IDEAS
    make setup
    conda activate ideas_annotation
    make install-as-pkg
