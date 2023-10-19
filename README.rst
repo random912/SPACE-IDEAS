@@ -101,7 +101,7 @@ Now we can obtain the prediction metrics with:
 
 Sequential Transfer Learning
 ~~~~~~~~~~~~~~~~~~~~~
-We can train a model, using for example OSIP plus dataset, and use that trained model to finetune on the SPACE-IDEAS dataset, we can do this with the following command:
+We can train a model, using for example SPACE-IDEAS plus dataset, and use that trained model to finetune on the SPACE-IDEAS dataset, we can do this with the following command:
 
 .. code:: bash
 
