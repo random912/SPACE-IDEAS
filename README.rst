@@ -56,7 +56,7 @@ We need to split the train set in train2 and dev set, we can do this with:
 
 .. code:: bash
 
-   python scripts/split_data.py
+   python scripts/split_train_data.py
 
 Two files, train2.jsonl and dev.jsonl, will be created in the data/processed folder. 
 
