@@ -83,13 +83,13 @@ We can now run the trainining stript with:
 
 .. code:: bash
 
-   ./scripts/train.sh tmp_output_dir_osip
+   ./scripts/train.sh tmp_output_dir_space-ideas
 
-The trained model will be at tmp_output_dir_osip/model.tar.gz, we can get the test predictions with:
+The trained model will be at tmp_output_dir_space-ideasp/model.tar.gz, we can get the test predictions with:
 
 .. code:: bash
 
-   python -m allennlp predict tmp_output_dir_osip/model.tar.gz ../data/processed/test.jsonl --include-package sequential_sentence_classification --predictor SeqClassificationPredictor --cuda-device 0 --output-file space-ideas-predictions.json
+   python -m allennlp predict tmp_output_dir_space-ideas/model.tar.gz ../data/processed/test.jsonl --include-package sequential_sentence_classification --predictor SeqClassificationPredictor --cuda-device 0 --output-file space-ideas-predictions.json
    
 Now we can obtain the prediction metrics with:
 
