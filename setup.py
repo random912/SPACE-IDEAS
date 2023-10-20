@@ -22,7 +22,7 @@ setup(
     long_description=readme,
     author="",
     author_email='',
-    url='https://github.com/random912/Streamlining-Proposal-Evaluation-in-the-Open-Space-Innovation-Platform',
+    url='https://github.com/random912/SPACE-IDEAS',
     python_requires='>=3.5',
     packages=find_packages(include=[
         'ideas_annotation', 'ideas_annotation.*'
