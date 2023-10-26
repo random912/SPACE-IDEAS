@@ -85,7 +85,7 @@ We can now run the trainining stript with:
 
    ./scripts/train.sh tmp_output_dir_space-ideas
 
-The trained model will be at tmp_output_dir_space-ideasp/model.tar.gz, we can get the test predictions with:
+The trained model will be at tmp_output_dir_space-ideas/model.tar.gz, we can get the test predictions with:
 
 .. code:: bash
 
@@ -101,14 +101,53 @@ Now we can obtain the prediction metrics with:
 
 Sequential Transfer Learning
 ~~~~~~~~~~~~~~~~~~~~~
+**Single-sentence classification:**
+
 We can train a model, using for example SPACE-IDEAS plus dataset, and use that trained model to finetune on the SPACE-IDEAS dataset, we can do this with the following command:
 
 .. code:: bash
 
    python ideas_annotation/modeling/idea_dataset_sentence_classification.py --model $PATH_TO_TRAINED_MODEL --input_train_dataset data/processed/train.jsonl --input_test_dataset data/processed/test.jsonl --use_context
 
+**Sequential sentence classification:**
 
-(TODO: Include how to do it with sequential sentence classification)
+First we need to train a model using the SPACE-IDEAS plus dataset, we can do it by changing the TRAIN_PATH variable in the train.sh script and point to the dataset location (../data/processed/space-ideas_plus.jsonl). Then we launch the training with:
+
+.. code:: bash
+
+   cd sequential_sentence_classification/
+   conda activate sequential_sentence_classification
+   ./scripts/train.sh tmp_output_dir_space-ideas-plus
+
+When the training is finished, we will have a model.tar.gz file in the "tmp_output_dir_space-ideas-plus" folder. To finally train using the SPACE-IDEAS dataset, we need to change the "config.jsonnet" file in the "sequential_sentence_classification" folder, we need to change the "model" field in line 40, to the following:
+
+.. code-block:: json
+
+   ..
+   "model": {
+      "type": "from_archive",
+      "archive_file": "tmp_output_dir_space-ideas-plus/model.tar.gz"
+   },
+   ..
+Then we change again the TRAIN_PATH variable in the train.sh script to point to the dataset location (../data/processed/train2.jsonl), and launch the training with:
+
+.. code:: bash
+
+   ./scripts/train.sh tmp_output_dir_space-ideas_from_space-ideas-plus
+
+The trained model will be at tmp_output_dir_space-ideas_from_space-ideas-plus/model.tar.gz, we can get the test predictions with:
+
+.. code:: bash
+
+   python -m allennlp predict tmp_output_dir_space-ideas_from_space-ideas-plus/model.tar.gz ../data/processed/test.jsonl --include-package sequential_sentence_classification --predictor SeqClassificationPredictor --cuda-device 0 --output-file space-ideas-predictions_from_space-ideas-plus.json
+
+Now we can obtain the prediction metrics with:
+
+.. code:: bash
+
+   cd ..
+   conda activate ideas_annotation
+   python scripts/sequential_sentence_classification_metrics.py --prediction_test_file sequential_sentence_classification/space-ideas-predictions_from_space-ideas-plus.json --gold_test_file data/processed/test.jsonl
 
 Multi-Task Learning
 ~~~~~~~~~~~~~~~~~~~~~
